@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity implements ListItemFragment.
         listItemFragment = ListItemFragment.newInstance(1);
         fm = getSupportFragmentManager();
         if (isPhone) {
-            fm.beginTransaction().replace(R.id.id_fl_fragment_list, listItemFragment).addToBackStack(null).commit();
+//            fm.beginTransaction().replace(R.id.id_fl_fragment_list, listItemFragment).addToBackStack(null).commit();
+            fm.beginTransaction().replace(R.id.id_fl_fragment_list, listItemFragment).commit();
         } else {
-            fm.beginTransaction().replace(R.id.id_fl_fragment_list_land, listItemFragment).addToBackStack(null).commit();
+            fm.beginTransaction().replace(R.id.id_fl_fragment_list_land, listItemFragment).commit();
 
         }
     }

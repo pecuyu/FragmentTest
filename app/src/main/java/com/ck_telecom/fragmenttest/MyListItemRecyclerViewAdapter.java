@@ -28,8 +28,15 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_listitem, parent, false);
+        View view =null;
+        if (viewType == 0) {    // 判断viewType来加载不同的view布局
+            view = LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.fragment_recycler_view_listitem, parent, false);
+        } else if (viewType==1){
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_recycler_view_listitem2, parent, false);
+        }
+
         return new ViewHolder(view);
     }
 
@@ -73,5 +80,16 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
+    }
+
+
+    /**
+     * 获取view的类型
+     * @param position
+     * @return
+     */
+    @Override
+    public int getItemViewType(int position) {
+        return position%2;
     }
 }
