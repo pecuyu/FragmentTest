@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest;
+package com.ck_telecom.fragmenttest.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.ck_telecom.fragmenttest.fragment.DetailFragment;
+import com.ck_telecom.fragmenttest.fragment.ListItemFragment;
+import com.ck_telecom.fragmenttest.R;
 import com.ck_telecom.fragmenttest.bean.InfoBean;
 
-public class MainActivity extends AppCompatActivity implements ListItemFragment.OnListFragmentInteractionListener,DetailFragment.OnDetailFragmentDestoryListener {
+public class MainActivity extends AppCompatActivity implements ListItemFragment.OnListFragmentInteractionListener,DetailFragment.OnDetailFragmentDetachListener {
     public static final String TAG = "MainActivity";
     public  boolean isPhone = true;
     private  ListItemFragment  listItemFragment;
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements ListItemFragment.
     }
 
     @Override
-    public void onDetailFragmentDestory() {
+    public void onDetailFragmentDetach() {
        // getSupportFragmentManager().beginTransaction().show(listItemFragment).commit();
     }
 

@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest;
+package com.ck_telecom.fragmenttest.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ck_telecom.fragmenttest.ListItemFragment.OnListFragmentInteractionListener;
+import com.ck_telecom.fragmenttest.R;
+import com.ck_telecom.fragmenttest.fragment.ListItemFragment.OnListFragmentInteractionListener;
 import com.ck_telecom.fragmenttest.bean.InfoBean.InfoItem;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
@@ -58,11 +59,15 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
             @Override
             public boolean onLongClick(View v) {
                 if (mItemLongClickListener != null) {
-                    mItemLongClickListener.onListFragmentItemLongClick(holder.mItem);
+                    mItemLongClickListener.onListFragmentItemLongClick(holder.mItem,position);
                 }
                 return false;
             }
         });
+    }
+
+    public List<InfoItem> getValues() {
+        return mValues;
     }
 
     @Override
@@ -105,7 +110,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
      * 长按监听器
      */
     public interface OnListFragmentItemLongClickListener{
-        void onListFragmentItemLongClick(InfoItem item);
+        void onListFragmentItemLongClick(InfoItem item,int pos);
     }
 
     /**

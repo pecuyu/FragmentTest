@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest;
+package com.ck_telecom.fragmenttest.fragment;
 
 
 import android.content.Context;
@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ck_telecom.fragmenttest.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DetailFragment extends Fragment {
 
-    public OnDetailFragmentDestoryListener mListener;
+    public OnDetailFragmentDetachListener mListener;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -28,12 +30,12 @@ public class DetailFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Context context) {  // 注册监听
         super.onAttach(context);
-        if (context instanceof OnDetailFragmentDestoryListener){
-            mListener= (OnDetailFragmentDestoryListener) context;
+        if (context instanceof OnDetailFragmentDetachListener){
+            mListener= (OnDetailFragmentDetachListener) context;
         }else{
-
+            // 处理其他，抛异常或其他手段
         }
 
     }
@@ -42,7 +44,15 @@ public class DetailFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         if (mListener != null) {
-            mListener.onDetailFragmentDestory();
+            mListener.onDetailFragmentDetach();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mListener != null) {    // 注销监听
+            mListener = null;
         }
     }
 
@@ -57,8 +67,8 @@ public class DetailFragment extends Fragment {
         return view;
     }
 
-    interface OnDetailFragmentDestoryListener{
-        void onDetailFragmentDestory();
+    public interface OnDetailFragmentDetachListener {
+        void onDetailFragmentDetach();
     }
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.ck_telecom.fragmenttest.MainActivity">
+    tools:context="com.ck_telecom.fragmenttest.ui.MainActivity">
 
     <FrameLayout
         android:id="@+id/id_fl_fragment_list_land"

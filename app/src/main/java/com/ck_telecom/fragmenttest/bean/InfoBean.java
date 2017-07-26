@@ -40,9 +40,9 @@ public class InfoBean {
 
 
     public static class InfoItem {
-        public final String id;
-        public final String content;
-        public final String details;
+        public String id;
+        public String content;
+        public String details;
 
         public InfoItem(String id, String content, String details) {
             this.id = id;
