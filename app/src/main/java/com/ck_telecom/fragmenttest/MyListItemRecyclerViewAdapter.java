@@ -15,6 +15,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
 
     private final List<InfoItem> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private OnListFragmentItemLongClickListener mItemLongClickListener;
 
     public MyListItemRecyclerViewAdapter(List<InfoItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -50,6 +51,16 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
                     // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
+            }
+        });
+
+        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mItemLongClickListener != null) {
+                    mItemLongClickListener.onListFragmentItemLongClick(holder.mItem);
+                }
+                return false;
             }
         });
     }
@@ -88,5 +99,20 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
     @Override
     public int getItemViewType(int position) {
         return position%2;
+    }
+
+    /**
+     * 长按监听器
+     */
+    public interface OnListFragmentItemLongClickListener{
+        void onListFragmentItemLongClick(InfoItem item);
+    }
+
+    /**
+     * 设置监听器
+     * @param listener
+     */
+    public void setOnListFragmentItemLongClickListener(OnListFragmentItemLongClickListener listener) {
+        this.mItemLongClickListener=listener;
     }
 }

@@ -1,15 +1,18 @@
 package com.ck_telecom.fragmenttest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ck_telecom.fragmenttest.bean.InfoBean;
 
@@ -19,7 +22,7 @@ import com.ck_telecom.fragmenttest.bean.InfoBean;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ListItemFragment extends Fragment {
+public class ListItemFragment extends Fragment implements MyListItemRecyclerViewAdapter.OnListFragmentItemLongClickListener{
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -28,6 +31,7 @@ public class ListItemFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
 
     public ListItemFragment() {
+
     }
 
     public static ListItemFragment newInstance(int columnCount) {
@@ -50,6 +54,7 @@ public class ListItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_list_recycler, container, false);
 
         // Set the adapter
@@ -61,7 +66,10 @@ public class ListItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyListItemRecyclerViewAdapter(InfoBean.ITEMS, mListener));
+            MyListItemRecyclerViewAdapter adapter = new MyListItemRecyclerViewAdapter(InfoBean.ITEMS, mListener);
+            adapter.setOnListFragmentItemLongClickListener(this);
+            recyclerView.setAdapter(adapter);
+
         }
         return view;
     }
@@ -89,17 +97,28 @@ public class ListItemFragment extends Fragment {
         mListener = null;
     }
 
+    //长按则从Fragment启动Activity
+    @Override
+    public void onListFragmentItemLongClick(InfoBean.InfoItem item) {
+        Log.e(getClass().getName().toString(), "onLongClick");
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        Bundle data = new Bundle();
+        data.putString("id", item.id);
+        intent.putExtras(data);
+        startActivity(intent);
+        Toast.makeText(getActivity(), "长按从Fragment启动Activity", Toast.LENGTH_SHORT).show();
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
      * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(InfoBean.InfoItem item);
     }
+
 }
