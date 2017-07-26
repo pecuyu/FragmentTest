@@ -71,11 +71,6 @@ public class ListItemFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (getActivity().findViewById(R.id.id_fl_fragment_detail_land) != null) {
-            
-        } else {
-
-        }
     }
 
     @Override
