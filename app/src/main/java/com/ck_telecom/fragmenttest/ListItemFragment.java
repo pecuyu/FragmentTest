@@ -11,8 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ck_telecom.fragmenttest.dummy.DummyContent;
-import com.ck_telecom.fragmenttest.dummy.DummyContent.DummyItem;
+import com.ck_telecom.fragmenttest.bean.InfoBean;
 
 /**
  * A fragment representing a list of Items.
@@ -57,12 +56,12 @@ public class ListItemFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
+            if (mColumnCount <= 1) {  // 根据列数设置LayoutManager
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyListItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyListItemRecyclerViewAdapter(InfoBean.ITEMS, mListener));
         }
         return view;
     }
@@ -76,7 +75,7 @@ public class ListItemFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
+        if (context instanceof OnListFragmentInteractionListener) {  // c初始化监听器
             mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
@@ -101,6 +100,6 @@ public class ListItemFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(InfoBean.InfoItem item);
     }
 }

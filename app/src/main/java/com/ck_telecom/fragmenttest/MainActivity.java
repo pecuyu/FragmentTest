@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.ck_telecom.fragmenttest.dummy.DummyContent;
+import com.ck_telecom.fragmenttest.bean.InfoBean;
 
 public class MainActivity extends AppCompatActivity implements ListItemFragment.OnListFragmentInteractionListener,DetailFragment.OnDetailFragmentDestoryListener {
     public static final String TAG = "MainActivity";
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ListItemFragment.
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(InfoBean.InfoItem item) {
         Toast.makeText(this, "item:" + item.id, Toast.LENGTH_SHORT).show();
         Bundle data = new Bundle();
         data.putString("id", item.id);
