@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest.fragment;
+package com.yu.fragmenttest.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ck_telecom.fragmenttest.adapter.MyListItemRecyclerViewAdapter;
-import com.ck_telecom.fragmenttest.R;
-import com.ck_telecom.fragmenttest.bean.InfoBean;
-import com.ck_telecom.fragmenttest.ui.DetailActivity;
+import com.yu.fragmenttest.R;
+import com.yu.fragmenttest.adapter.MyListItemRecyclerViewAdapter;
+import com.yu.fragmenttest.bean.InfoBean;
+import com.yu.fragmenttest.ui.DetailActivity;
 
 import java.util.List;
 
@@ -134,8 +134,8 @@ public class ListItemFragment extends Fragment implements MyListItemRecyclerView
             String id = (String) data.getExtras().get("id");
             String pos = (String) data.getExtras().get("pos");
             List<InfoBean.InfoItem> infoItems = adapter.getValues();
-            infoItems.get(Integer.parseInt(pos)).id = id;
-            adapter.notifyItemChanged(Integer.parseInt(pos));
+            infoItems.get(Integer.parseInt(pos)).id = id;   // 获得返回的id并修改
+            adapter.notifyItemChanged(Integer.parseInt(pos));  // 刷新某个条目
         }
     }
 }

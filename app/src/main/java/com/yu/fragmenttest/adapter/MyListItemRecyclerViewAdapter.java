@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest.adapter;
+package com.yu.fragmenttest.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,19 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ck_telecom.fragmenttest.R;
-import com.ck_telecom.fragmenttest.fragment.ListItemFragment.OnListFragmentInteractionListener;
-import com.ck_telecom.fragmenttest.bean.InfoBean.InfoItem;
+import com.yu.fragmenttest.R;
+import com.yu.fragmenttest.bean.InfoBean;
+import com.yu.fragmenttest.fragment.ListItemFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
 public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<InfoItem> mValues;
+    private final List<InfoBean.InfoItem> mValues;
     private final OnListFragmentInteractionListener mListener;
     private OnListFragmentItemLongClickListener mItemLongClickListener;
 
-    public MyListItemRecyclerViewAdapter(List<InfoItem> items, OnListFragmentInteractionListener listener) {
+    public MyListItemRecyclerViewAdapter(List<InfoBean.InfoItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -66,7 +66,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
         });
     }
 
-    public List<InfoItem> getValues() {
+    public List<InfoBean.InfoItem> getValues() {
         return mValues;
     }
 
@@ -79,7 +79,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public InfoItem mItem;
+        public InfoBean.InfoItem mItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -110,7 +110,7 @@ public class MyListItemRecyclerViewAdapter extends RecyclerView.Adapter<MyListIt
      * 长按监听器
      */
     public interface OnListFragmentItemLongClickListener{
-        void onListFragmentItemLongClick(InfoItem item,int pos);
+        void onListFragmentItemLongClick(InfoBean.InfoItem item, int pos);
     }
 
     /**

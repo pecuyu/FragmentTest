@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest.bean;
+package com.yu.fragmenttest.bean;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,11 +1,12 @@
-package com.ck_telecom.fragmenttest.ui;
+package com.yu.fragmenttest.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.ck_telecom.fragmenttest.R;
+import com.yu.fragmenttest.R;
+
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class DetailActivity extends AppCompatActivity {
         String id = (String) extras.get("id");
         TextView tvId = (TextView) findViewById(R.id.id_tv_fragment_detail_land);
         tvId.setText("item:"+id);
+
         setActivityRusult(intent, extras, id);
     }
 

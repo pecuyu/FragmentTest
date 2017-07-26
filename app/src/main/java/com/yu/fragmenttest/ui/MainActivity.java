@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest.ui;
+package com.yu.fragmenttest.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.ck_telecom.fragmenttest.fragment.DetailFragment;
-import com.ck_telecom.fragmenttest.fragment.ListItemFragment;
-import com.ck_telecom.fragmenttest.R;
-import com.ck_telecom.fragmenttest.bean.InfoBean;
+import com.yu.fragmenttest.R;
+import com.yu.fragmenttest.bean.InfoBean;
+import com.yu.fragmenttest.fragment.DetailFragment;
+import com.yu.fragmenttest.fragment.ListItemFragment;
 
 public class MainActivity extends AppCompatActivity implements ListItemFragment.OnListFragmentInteractionListener,DetailFragment.OnDetailFragmentDetachListener {
     public static final String TAG = "MainActivity";

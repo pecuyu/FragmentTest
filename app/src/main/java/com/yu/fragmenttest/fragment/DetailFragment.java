@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest.fragment;
+package com.yu.fragmenttest.fragment;
 
 
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ck_telecom.fragmenttest.R;
+import com.yu.fragmenttest.R;
 
 
 /**
