@@ -1,4 +1,4 @@
-package com.ck_telecom.fragmenttest;
+package com.yu.fragmenttest;
 
 import org.junit.Test;
 
